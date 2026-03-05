@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role', 
+        'profile', 
+        'phone', 
+        'hospital_id'
     ];
 
     /**
@@ -44,5 +48,30 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+   public function hospital()
+    {
+        return $this->belongsTo(Hospitals::class);
+    }
+
+    public function donorProfile()
+    {
+        return $this->hasOne(Donors::class, 'user_id');
+    }
+
+    public function createdDonors()
+    {
+        return $this->hasMany(Donors::class, 'created_by');
+    }
+
+    public function approvedDonationRequests()
+    {
+        return $this->hasMany(DonationRequests::class, 'approved_by');
+    }
+
+    public function bloodTests()
+    {
+        return $this->hasMany(BloodTests::class, 'tested_by');
     }
 }
