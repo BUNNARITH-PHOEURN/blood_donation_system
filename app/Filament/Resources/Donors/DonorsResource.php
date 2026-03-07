@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Donors;
 
+use Illuminate\Database\Eloquent\Builder;
+
 use App\Filament\Resources\Donors\Pages\CreateDonors;
 use App\Filament\Resources\Donors\Pages\EditDonors;
 use App\Filament\Resources\Donors\Pages\ListDonors;
@@ -19,6 +21,11 @@ class DonorsResource extends Resource
     protected static ?string $model = Donors::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::User;
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with(['user','creator']);
+    }
 
     public static function form(Schema $schema): Schema
     {

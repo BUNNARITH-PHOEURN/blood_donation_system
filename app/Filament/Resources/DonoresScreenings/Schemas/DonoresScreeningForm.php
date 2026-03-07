@@ -17,10 +17,14 @@ class DonoresScreeningForm
             ->components([
                     // Donor selection
                     Select::make('donor_id')
-                        ->relationship('donor', 'user.name')
-                        ->required()
+                        ->label('Donor')
+                        ->options(
+                            \App\Models\Donors::with('user')
+                                ->get()
+                                ->pluck('user.name', 'id')
+                        )
                         ->searchable()
-                        ->label('Donor'),
+                        ->required(),
 
                     // Screening date
                     DatePicker::make('screening_date')
