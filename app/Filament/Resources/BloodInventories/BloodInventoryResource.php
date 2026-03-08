@@ -18,6 +18,8 @@ class BloodInventoryResource extends Resource
 {
     protected static ?string $model = BloodInventory::class;
 
+    protected static ?int $navigationSort = 5;
+    protected static ?string $navigationLabel = 'Blood Inventory';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::InboxArrowDown;
 
     protected static ?string $recordTitleAttribute = 'BloodInventory';

@@ -18,6 +18,8 @@ class BloodBagsResource extends Resource
 {
     protected static ?string $model = BloodBags::class;
 
+    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationLabel = 'Blood Bags & Test';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Cube;
 
     protected static ?string $recordTitleAttribute = 'BloodBags';

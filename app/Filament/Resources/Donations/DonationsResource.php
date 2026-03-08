@@ -18,6 +18,8 @@ class DonationsResource extends Resource
 {
     protected static ?string $model = Donations::class;
 
+    protected static ?int $navigationSort = 3;
+    protected static ?string $navigationLabel = 'Donations';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Heart;
 
     protected static ?string $recordTitleAttribute = 'Donations';

@@ -18,6 +18,8 @@ class DonorsResource extends Resource
 {
     protected static ?string $model = Donors::class;
 
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel = 'Donors Management';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::User;
 
     public static function form(Schema $schema): Schema

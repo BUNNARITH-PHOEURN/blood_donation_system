@@ -4,13 +4,12 @@ namespace App\Providers;
 
 use App\Filament\Pages\Auth\Register;
 use Filament\Facades\Filament;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class FilamentServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      */
     public function register(): void
     {
@@ -18,10 +17,14 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      */
     public function boot(): void
     {
-        Schema::defaultStringLength(191);
+        // Filament::serving(function () {
+        //     Filament::registerPages([
+        //         Register::class,
+        //     ]);
+        // });
     }
 }

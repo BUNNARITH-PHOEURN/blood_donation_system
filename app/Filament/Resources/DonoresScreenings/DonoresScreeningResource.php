@@ -18,6 +18,8 @@ class DonoresScreeningResource extends Resource
 {
     protected static ?string $model = DonoresScreening::class;
 
+    protected static ?int $navigationSort = 2;
+    protected static ?string $navigationLabel = 'Pre-Donation Screening';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ClipboardDocumentCheck;
 
     protected static ?string $recordTitleAttribute = 'DonorsScreening';

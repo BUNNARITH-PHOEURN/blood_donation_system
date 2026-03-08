@@ -1,0 +1,4 @@
+/* Target ONLY the sidebar, not the whole screen */
+.fi-sidebar {
+    background-color: #695959 !important; /* Keep sidebar white like your first image */
+}

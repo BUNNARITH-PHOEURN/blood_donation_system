@@ -9,3 +9,25 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.fi-sidebar-item-active {
+    background-color: #fff1f2 !important; /* Light red/rose */
+    color: #e11d48 !important; /* Rose-600 */
+    border-radius: 0.5rem;
+}
+
+/* Sidebar background color */
+.fi-sidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #f3f4f6;
+}
+
+/* Custom Logout button styling */
+.custom-logout-btn {
+    margin: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+}

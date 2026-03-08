@@ -1,5 +1,5 @@
 <x-filament-widgets::widget>
-    <x-filament::section class="custom-section" style="width:63.5vw; padding: 0; margin: 0;">
+    <x-filament::section class="custom-section" style="width:70vw; padding: 0; margin: 0;">
         <style>
             .custom-section {
                 padding: 0 !important;

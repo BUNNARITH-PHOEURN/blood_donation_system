@@ -18,6 +18,8 @@ class BloodRequestsResource extends Resource
 {
     protected static ?string $model = BloodRequests::class;
 
+    protected static ?int $navigationSort = 6;
+    protected static ?string $navigationLabel = 'Blood Request';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::HandRaised;
 
     protected static ?string $recordTitleAttribute = 'BloodRequest';
