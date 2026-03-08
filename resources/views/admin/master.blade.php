@@ -4,60 +4,81 @@
     <title>Blood Bank Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <style>
+        .sidebar{
+            width:250px;
+            height:100vh;
+            background:#ffffff;
+            position:fixed;
+        }
+
+        .sidebar a{
+            color:white;
+            padding:12px 20px;
+            display:block;
+            text-decoration:none;
+        }
+
+        .sidebar a:hover{
+            background:#ffffff;
+        }
+
+       .nav-link.active{
+            color: #dc3545 !important;
+            font-weight: bold;
+        }
+
+        .main-content{
+            margin-left:250px;
+        }
+
+        .sidebar-footer{
+        position: absolute;
+        bottom: 10px;
+        width:220px;
+        }
+
+        .logout{
+        margin-top:15px;
+        width:100%;
+        padding:10px;
+        border-radius:8px;
+        border:1px solid #ddd;
+        background:white;
+        cursor:pointer;
+        }
+
+        .logout:hover{
+        background:#f5f5f5;
+        }
+
+</style>
 </head>
 <body style="background:#f5f6fa;">
-    
 
-<div class="container-fluid">
-    <div class="row">
+            @include('admin.nav')
 
-        <!-- Sidebar -->
-        <div class="col-2 bg-white vh-100 p-3 shadow-sm">
+        <div class="main-content">
+            <div class="container-fluid p-4">
+                <div class="row">
 
-            <table style="padding: 4px">
-            <td> 
-                <h5 class="text-black fw-bold">Blood Donation</h5>
-                <p class="text-muted small">System</p>
-            </td>
-            </table>
-            <hr>
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link text-danger fw-bold" href="/dashboard"> 
-                    <span class="bi bi-ui-checks-grid"></span>
-                    Dashboard
-                </a></li>
-                <li class="nav-item"><a class="nav-link text-black" href="/donor">Donors</a></li>
-                <li class="nav-item"><a class="nav-link text-black" href="#">Donations</a></li>
-                <li class="nav-item"><a class="nav-link text-black" href="#">Blood Stock</a></li>
-                <li class="nav-item"><a class="nav-link text-black" href="#">Requests</a></li>
-            </ul>
+                <!-- Sidebar -->
+                <!-- Main Content -->
+                @yield('head')
 
-            <!-- <div class="fixed-button">
-                <hr>
-                <p>Admin User</p>
-                <p></p>
-            </div> -->
+                <!-- Blood Stock Table -->
+                @yield('contents')
+                </div>
+
+            </div>
         </div>
 
-        <!-- Top Navbar -->
-        <div class="col-10">
-        <br>
-        <div class="container-fluid">
-        <!-- Main Content -->
-            @yield('head')
-
-
-            <!-- Blood Stock Table -->
-                    @yield('contents')
-        </div>
-
-        </div>
-    </div>
-</div>
 
 </body>
 </html>

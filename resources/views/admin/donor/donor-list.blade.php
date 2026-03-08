@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-</head>
 @extends('admin.master')
-<body>
+
 @section('head')
-<div class="row">
-    <div class="col-md-6">
+
+<div class="d-flex align-items-start justify-content-between">
+    <div class="text-start p-2">
         <h2 class="text-black fw-bold">Donor Management</h2>
         <p class="text-muted">Management and track blood donors</p>
     </div>
-    <div align="right" style="margin: 4px" class="col-md-5">
+    <div style="margin: 4px" class="p-2 right">
         <br>
         <a href="#" id="adddonor" class="btn btn-danger">Add New Donor</a>
     </div>
 </div>
+
 @endsection
 
 @section('contents')
@@ -36,8 +30,6 @@
         $(function(){
             $("#adddonor").click(function(){
                 $("#modalTitle").html("Add Donor");
-                $("#buttonEdit").hide();
-                $("#buttonAdd").show();
                 $("#donorModal").modal('show');
             });
 
@@ -51,49 +43,10 @@
 
                 $.post('/adddonor', {user_id:user_id, gender:gender, date_of_birth:date_of_birth, weight:weight, blood_type:blood_type}, function(data){
                     alert(data);
-                    window.location.href="/donor"; 
+                    window.location.href="/admin/donor"; 
                 });
             });
-
-            // Find category for edit
-            $("#tbldonor").on('click', '.edit', function(){
-                let id = $(this).closest('tr').data('id');
-                let row = $(this).closest('tr');
-                let weight = row.find('td').eq(3).text();
-
-                $("#txtid").val(id);
-                $("#weight").val(weight);
-
-                $("#modalTitle").html("Edit Donor");
-                $('#buttonAdd').hide();
-                $("#buttonEdit").show();
-                $("#donorModal").modal('show');
-
-            });
-
-            //Edit Category info
-            $("#btnchange").click(function(){
-                let id = $('#txtid').val();
-                let weight = $('#weight').val();
-
-                $.post('/editDonor', {txtid: id, weight:weight}, function(data){
-                    //alert(status);
-                    alert(data);
-                    window.location.href="/donor"; 
-                });
-            });
-
-            //Delete by ID
-            $("#tbldonor").on('click', '.delete', function(){
-                let id = $(this).closest('tr').data('id');
-                if(confirm("Are you sure you want to delete this donor?")){
-                    $.post('/deleteDonor', {txtid:id}, function(data){
-                        alert(data);
-                        window.location.href="/donor"; 
-                    });
-                }
-            });
-        });
+        })
     </script>
 
 
@@ -101,27 +54,24 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Blood Type</th>
                 <th>Gender</th>
                 <th>DOB</th>
-                <th>Weight</th>
-                <th>Blood Type</th>  
-                <th>Action</th>
+                <th>Weight</th>  
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($donors as $donor)
                 <tr data_id="{{ $donor->id }}">
                     <td>{{ $donor->name }}</td>
+                    <td>{{ $donor->blood_type }}</td>
                     <td>{{ $donor->gender }}</td>
                     <td>{{ $donor->date_of_birth }}</td>
                     <td>{{ $donor->weight }}</td>
-                    <td>{{ $donor->blood_type }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-primary edit">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm btn-danger delete">
-                            <i class="bi bi-trash"></i>
+                        <a href= "/profile/{{ $donor->id }}" class="btn btn-sm btn-outline-secondary text-dark">
+                            View Detail
                         </a>
                     </td>
                 </tr>
@@ -146,7 +96,7 @@
         @csrf
         <input type="hidden" id="txtid">
         
-        <div>
+        <div class="p-2">
             <label for="name">Donor Name:</label>
                 <select id="user_id" class="form-control">
                     <option value="">Select User</option>
@@ -155,20 +105,20 @@
                     @endforeach
                 </select>
     </div>
-    <div>
+    <div class="p-2">
             <label for="name">Gender:</label><br>
             <input type="radio" id="gender" name="gender" class="form-check-input" Value="Male" required>Male
             <input type="radio" id="gender" name="gender" class="form-check-input" Value="Female" required>Female
     </div>
-    <div>
+    <div class="p-2">
         <label for="name">Date of Birth:</label>
         <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
     </div>
-    <div>
+    <div class="p-2">
         <label for="name">Weight:</label>
         <input type="number" id="weight" name="weight" class="form-control" required>
     </div>
-    <div>
+    <div class="p-2">
         <label for ="name">Blood Type:</label><br>
         <input type="radio" id="blood_type" name="blood_type" class="form-check-input" Value="A+" required>A+
         <input type="radio" id="blood_type" name="blood_type" class="form-check-input" Value="A-" required>A-
@@ -185,11 +135,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
         <div id="buttonAdd">
-            <button type="button" class="btn btn-primary" id="btnsave">Save</button>
-        </div>
-        
-        <div id="buttonEdit">
-            <button type="button" class="btn btn-primary" id="btnchange">Save Change</button>
+            <button type="button" class="btn btn-danger" id="btnsave">Save</button>
         </div>
       </div>
     </div>
@@ -200,6 +146,4 @@
 </div>
 </div>
 
-</body>
-</html>
 @endsection
