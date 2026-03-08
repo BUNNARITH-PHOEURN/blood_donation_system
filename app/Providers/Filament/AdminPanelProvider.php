@@ -30,6 +30,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->registration()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -40,8 +41,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                \App\Filament\Widgets\DashboardStats::class,
-                \App\Filament\Widgets\BloodStock::class,
+                //\App\Filament\Widgets\DashboardStats::class,
+                //\App\Filament\Widgets\BloodStock::class,
+                \App\Filament\Widgets\AtTheTopCard::class,
+                \App\Filament\Widgets\BloodStock::class
+                
                 //Stat::make('Total Donor', User::class)
                 //AccountWidget::class,
                 //FilamentInfoWidget::class,

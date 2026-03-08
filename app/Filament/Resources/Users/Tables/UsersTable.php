@@ -2,11 +2,14 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
+use App\Models\User;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class UsersTable
 {
@@ -40,8 +43,12 @@ class UsersTable
                 ->dateTime(),
             ])
             ->filters([
-                //
+
             ])
+            ->modifyQueryUsing(function (Builder $query) {
+            // For a 'role' string column
+            $query->where('role', '<>', 'Donor');
+            })
             ->recordActions([
                 EditAction::make(),
             ])
@@ -51,4 +58,5 @@ class UsersTable
                 ]),
             ]);
     }
+    
 }
