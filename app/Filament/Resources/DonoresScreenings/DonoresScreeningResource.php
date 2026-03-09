@@ -45,8 +45,8 @@ class DonoresScreeningResource extends Resource
     {
         return [
             'index' => ListDonoresScreenings::route('/'),
-            'create' => CreateDonoresScreening::route('/create'),
-            'edit' => EditDonoresScreening::route('/{record}/edit'),
+            //'create' => CreateDonoresScreening::route('/create'),
+            //'edit' => EditDonoresScreening::route('/{record}/edit'),
         ];
     }
 }

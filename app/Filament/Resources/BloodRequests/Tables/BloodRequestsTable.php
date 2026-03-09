@@ -17,6 +17,9 @@ class BloodRequestsTable
     {
         return $table
             ->columns([
+                TextColumn::make('requester.name')
+                ->label(label: 'Request By'),
+
                 TextColumn::make('hospital.name')
                 ->label('Hospital'),
 

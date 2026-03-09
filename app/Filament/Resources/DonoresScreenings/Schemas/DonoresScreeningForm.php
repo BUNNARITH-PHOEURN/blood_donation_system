@@ -17,10 +17,12 @@ class DonoresScreeningForm
             ->components([
                     // Donor selection
                     Select::make('donor_id')
-                        ->relationship('donor', 'user.name')
-                        ->required()
-                        ->searchable()
-                        ->label('Donor'),
+                    ->relationship('donor', 'id')
+                    ->getOptionLabelFromRecordUsing(fn ($record) => $record->user->name)
+                    ->searchable()
+                    ->preload()
+                    ->required()
+                    ->label('Donor'),
 
                     // Screening date
                     DatePicker::make('screening_date')

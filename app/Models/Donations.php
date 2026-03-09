@@ -19,6 +19,11 @@ class Donations extends Model
         return $this->belongsTo(Donors::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     public function hospital()
     {
         return $this->belongsTo(Hospitals::class);

@@ -18,6 +18,8 @@ class BloodTestsResource extends Resource
 {
     protected static ?string $model = BloodTests::class;
 
+    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationLabel = 'Blood Tests';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ClipboardDocumentList;
 
     protected static ?string $recordTitleAttribute = 'BloodTests';
@@ -43,8 +45,8 @@ class BloodTestsResource extends Resource
     {
         return [
             'index' => ListBloodTests::route('/'),
-            'create' => CreateBloodTests::route('/create'),
-            'edit' => EditBloodTests::route('/{record}/edit'),
+            //'create' => CreateBloodTests::route('/create'),
+            //'edit' => EditBloodTests::route('/{record}/edit'),
         ];
     }
 }

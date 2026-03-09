@@ -29,9 +29,10 @@ class UsersForm
 
             Select::make('role')
                 ->options([
-                    'Admin' => 'Admin',
-                    'Hospital' => 'Hospital',
-                    'Donor' => 'Donor',
+                    'super_admin' => 'Super Admin',
+                    'admin' => 'Admin',
+                    'hospital_staff' => 'Hospital',
+                    'donor' => 'Donor',
                 ])
                 ->default('Donor')
                 ->required(),

@@ -19,7 +19,7 @@ class BloodBagsResource extends Resource
     protected static ?string $model = BloodBags::class;
 
     protected static ?int $navigationSort = 4;
-    protected static ?string $navigationLabel = 'Blood Bags & Test';
+    protected static ?string $navigationLabel = 'Blood Bags';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Cube;
 
     protected static ?string $recordTitleAttribute = 'BloodBags';
@@ -45,8 +45,8 @@ class BloodBagsResource extends Resource
     {
         return [
             'index' => ListBloodBags::route('/'),
-            'create' => CreateBloodBags::route('/create'),
-            'edit' => EditBloodBags::route('/{record}/edit'),
+            //'create' => CreateBloodBags::route('/create'),
+            //'edit' => EditBloodBags::route('/{record}/edit'),
         ];
     }
 }

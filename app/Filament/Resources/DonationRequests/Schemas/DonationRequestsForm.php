@@ -14,11 +14,21 @@ class DonationRequestsForm
             ->components([
                 Select::make('donor_id')
                 ->relationship('donor', 'id')
+                ->getOptionLabelFromRecordUsing(fn ($record) => $record->user->name)
                 ->searchable()
+                ->preload()
                 ->required(),
+                // ->relationship('donor', 'name.user')
+                // ->searchable()
+                // ->required(),
 
+            // Select::make('hospital_id')
+            //     ->relationship('hospital', 'name')
+            //     ->searchable()
+            //     ->required(),
             Select::make('hospital_id')
                 ->relationship('hospital', 'name')
+                ->nullable()
                 ->searchable()
                 ->required(),
 

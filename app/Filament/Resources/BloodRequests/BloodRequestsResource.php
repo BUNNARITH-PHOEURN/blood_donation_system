@@ -45,8 +45,8 @@ class BloodRequestsResource extends Resource
     {
         return [
             'index' => ListBloodRequests::route('/'),
-            'create' => CreateBloodRequests::route('/create'),
-            'edit' => EditBloodRequests::route('/{record}/edit'),
+            //'create' => CreateBloodRequests::route('/create'),
+            //'edit' => EditBloodRequests::route('/{record}/edit'),
         ];
     }
 }
