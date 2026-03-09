@@ -45,8 +45,8 @@ class BloodInventoryResource extends Resource
     {
         return [
             'index' => ListBloodInventories::route('/'),
-            'create' => CreateBloodInventory::route('/create'),
-            'edit' => EditBloodInventory::route('/{record}/edit'),
+            //'create' => CreateBloodInventory::route('/create'),
+            //'edit' => EditBloodInventory::route('/{record}/edit'),
         ];
     }
 }

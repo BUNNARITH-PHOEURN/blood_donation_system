@@ -14,10 +14,20 @@ class BloodBags extends Model
         'status'
     ];
 
-    public function donation()
+     public function donation()
     {
         return $this->belongsTo(Donations::class);
     }
+     public function donor()
+    {
+        return $this->belongsTo(Donors::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
     public function bloodTests()
     {

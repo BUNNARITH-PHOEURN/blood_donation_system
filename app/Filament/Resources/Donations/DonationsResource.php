@@ -45,8 +45,8 @@ class DonationsResource extends Resource
     {
         return [
             'index' => ListDonations::route('/'),
-            'create' => CreateDonations::route('/create'),
-            'edit' => EditDonations::route('/{record}/edit'),
+            //'create' => CreateDonations::route('/create'),
+            //'edit' => EditDonations::route('/{record}/edit'),
         ];
     }
 }

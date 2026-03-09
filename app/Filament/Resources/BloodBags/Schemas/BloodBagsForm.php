@@ -13,9 +13,14 @@ class BloodBagsForm
         return $schema
             ->components([
                 Select::make('donation_id')
-                ->relationship('donation', 'id')
+                ->relationship('donor', 'id')
+                ->getOptionLabelFromRecordUsing(fn ($record) => $record->user->name)
                 ->searchable()
+                ->preload()
                 ->required(),
+                // ->relationship('donation', 'id')
+                // ->searchable()
+                // ->required(),
 
             Select::make('blood_type')
                 ->options([

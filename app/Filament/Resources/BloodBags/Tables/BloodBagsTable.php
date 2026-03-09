@@ -19,6 +19,10 @@ class BloodBagsTable
 
                 TextColumn::make('donation.donor.user.name')
                 ->label('Donor'),
+                // TextColumn::make('donor.user.name')
+                // ->label('Donor')
+                // ->searchable()
+                // ->sortable(),
 
                 TextColumn::make('blood_type')
                 ->badge()

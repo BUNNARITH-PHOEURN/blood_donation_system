@@ -25,7 +25,8 @@ class BloodTestsTable
                 ->label('Tested By'),
 
                 TextColumn::make('tested_at')
-                ->dateTime(),
+                ->date()
+                ->label('Test Date')
             ])
             ->filters([
                 //
