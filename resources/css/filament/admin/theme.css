@@ -1,0 +1,13 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+/* Target ONLY the sidebar, not the whole screen */
+.fi-sidebar {
+    background-color: #ffffff !important; /* Keep sidebar white like your first image */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* border: 0.2px solid rgb(170, 170, 170); */
+    border-top: none;
+    border-bottom: none;
+}

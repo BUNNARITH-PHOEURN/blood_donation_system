@@ -1,5 +1,6 @@
 <?php
 
+use App\Filament\Pages\Auth\Register;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\donorController;
 use App\Http\Controllers\dashboardController;
