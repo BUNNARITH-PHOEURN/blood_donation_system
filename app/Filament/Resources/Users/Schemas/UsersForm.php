@@ -36,6 +36,12 @@ class UsersForm
                 ])
                 ->default('Donor')
                 ->required(),
+            Select::make('roles')
+                ->label('Role')
+                ->relationship('roles', 'name')
+                ->searchable()
+                ->preload()
+                ->required(),
 
             TextInput::make('phone')
                 ->tel(),
